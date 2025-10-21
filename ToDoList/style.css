@@ -1,0 +1,155 @@
+/* --- Configurações Globais --- */
+* {
+    box-sizing: border-box; /* Garante que padding e borda não afetem o tamanho final */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f0f2f5; /* Um cinza claro para o fundo */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha no topo */
+    min-height: 100vh;
+    padding-top: 50px; /* Espaço no topo */
+}
+
+/* --- Container Principal --- */
+.todo-container {
+    width: 90%;
+    max-width: 500px; /* Largura máxima */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Garante que os cantos arredondados sejam aplicados */
+}
+
+header {
+    background-color: #4a90e2; /* Um azul principal */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* --- Seção de Input --- */
+.task-input-section {
+    display: flex; /* Alinha input e botão na mesma linha */
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+#new-task-input {
+    flex-grow: 1; /* Faz o input ocupar o espaço disponível */
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+#new-task-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+#add-task-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0 18px; /* Padding horizontal */
+    font-size: 24px; /* Tamanho do "+" */
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add-task-btn:hover {
+    background-color: #357abd; /* Azul mais escuro no hover */
+}
+
+/* --- Lista de Tarefas --- */
+main {
+    padding: 10px 0; /* Espaçamento interno vertical */
+}
+
+#task-list {
+    list-style-type: none; /* Remove os marcadores de lista */
+}
+
+#task-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+#task-list li:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+}
+
+#task-list li:hover {
+    background-color: #f9f9f9;
+}
+
+/* --- Itens da Tarefa (Checkbox, Texto, Botão) --- */
+.task-checkbox {
+    /* Aumenta o tamanho do checkbox */
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    flex-shrink: 0; /* Impede que o checkbox encolha */
+}
+
+.task-text {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    color: #444;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.delete-btn {
+    background-color: #e74c3c; /* Vermelho para deletar */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Botão redondo */
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 28px; /* Centraliza o 'X' verticalmente */
+    text-align: center;
+    cursor: pointer;
+    flex-shrink: 0; /* Impede que o botão encolha */
+    
+    /* Esconde o botão por padrão */
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Mostra o botão de deletar quando o mouse passa por cima do <li> */
+#task-list li:hover .delete-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+}
+
+/* --- Estilo para Tarefas Completadas --- */
+#task-list li.completed .task-text {
+    text-decoration: line-through; /* Risca o texto */
+    color: #999; /* Cor mais clara */
+}
